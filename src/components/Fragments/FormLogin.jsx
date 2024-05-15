@@ -60,18 +60,18 @@ export default function FormLogin() {
                   </Link>
                </p>
             </form>
+            <ToastContainer
+               position='top-center'
+               autoClose={1500}
+               hideProgressBar={false}
+               newestOnTop={false}
+               closeOnClick
+               rtl={false}
+               pauseOnFocusLoss
+               pauseOnHover
+               theme='dark'
+            />
          </div>
-         <ToastContainer
-            position='top-center'
-            autoClose={1500}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            pauseOnHover
-            theme='dark'
-         />
       </div>
    );
 }

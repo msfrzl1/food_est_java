@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import FormInput from '../Elements/FormInput';
 import Button from '../Elements/Button';
 import useAuth from '../Hooks/useAuth';
@@ -8,6 +10,7 @@ import useAuth from '../Hooks/useAuth';
 export default function FormRegister() {
    const [showPassword, setShowPassword] = useState(false);
    const { auth } = useAuth();
+   const navigate = useNavigate();
 
    const handleShowPassword = () => {
       setShowPassword(!showPassword);
@@ -25,10 +28,11 @@ export default function FormRegister() {
       const res = await auth('register', userData);
       if (res.status === 200) {
          setTimeout(() => {
-            console.log(res.data.message);
+            navigate('/login');
          }, 2000);
+         toast.success(res.data.message);
       } else {
-         console.log(res.response.data.message);
+         toast.error(res.response.data.message);
       }
    };
 
@@ -66,6 +70,17 @@ export default function FormRegister() {
                   </Link>
                </p>
             </form>
+            <ToastContainer
+               position='top-center'
+               autoClose={1500}
+               hideProgressBar={false}
+               newestOnTop={false}
+               closeOnClick
+               rtl={false}
+               pauseOnFocusLoss
+               pauseOnHover
+               theme='dark'
+            />
          </div>
       </div>
    );
