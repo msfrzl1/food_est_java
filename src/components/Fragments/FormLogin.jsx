@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import FormInput from '../Elements/FormInput';
-import Button from '../Elements/Button';
 import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import FormInput from '../Elements/FormInput';
+import Button from '../Elements/Button';
 import useAuth from '../Hooks/useAuth';
 
 export default function FormLogin() {
@@ -23,10 +25,11 @@ export default function FormLogin() {
       const res = await auth('login', userData);
       if (res.status === 200) {
          setTimeout(() => {
-            console.log(res.data.message);
+            window.location.reload();
          }, 2000);
+         toast.success(res.data.message);
       } else {
-         console.log(res.response.data.message);
+         toast.error(res.response.data.message);
       }
    };
 
@@ -40,7 +43,7 @@ export default function FormLogin() {
 
                   <div className='relative'>
                      <FormInput type={showPassword ? 'text' : 'password'} name={'password'} placeholder={'Masukan Kata Sandi'} />
-                     <button onClick={handleShowPassword} className='absolute top-[4px] right-2'>
+                     <button type={'button'} onClick={handleShowPassword} className='absolute top-[4px] right-2'>
                         {showPassword ? <AiFillEye size={25} /> : <AiFillEyeInvisible size={25} />}
                      </button>
                   </div>
@@ -50,14 +53,25 @@ export default function FormLogin() {
                      value={'Login'}
                   />
                </div>
+               <p className='text-center'>
+                  Belum punya akun?{' '}
+                  <Link to='/register' className='text-blue-500 font-bold hover:underline transition duration-300 ease-in-out'>
+                     Registrasi
+                  </Link>
+               </p>
             </form>
-            <p className='text-center'>
-               Belum punya akun?{' '}
-               <Link to='/register' className='text-blue-500 font-bold hover:underline transition duration-300 ease-in-out'>
-                  Registrasi
-               </Link>
-            </p>
          </div>
+         <ToastContainer
+            position='top-center'
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            pauseOnHover
+            theme='dark'
+         />
       </div>
    );
 }

@@ -47,7 +47,7 @@ export default function FormRegister() {
 
                   <div className='relative'>
                      <FormInput type={showPassword ? 'text' : 'password'} name={'password'} placeholder={'Masukan Kata Sandi'} />
-                     <button onClick={handleShowPassword} className='absolute top-[4px] right-2'>
+                     <button type={'button'} onClick={handleShowPassword} className='absolute top-[4px] right-2'>
                         {showPassword ? <AiFillEye size={25} /> : <AiFillEyeInvisible size={25} />}
                      </button>
                   </div>
@@ -59,13 +59,13 @@ export default function FormRegister() {
                      value={'Daftar'}
                   />
                </div>
+               <p className='text-center'>
+                  Sudah punya akun?{' '}
+                  <Link to='/login' className='text-blue-500 font-bold hover:underline transition duration-300 ease-in-out'>
+                     Login
+                  </Link>
+               </p>
             </form>
-            <p className='text-center'>
-               Sudah punya akun?{' '}
-               <Link to='/login' className='text-blue-500 font-bold hover:underline transition duration-300 ease-in-out'>
-                  Login
-               </Link>
-            </p>
          </div>
       </div>
    );
