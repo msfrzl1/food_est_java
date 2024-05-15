@@ -18,7 +18,7 @@ export default function FormLogin() {
             <div className='flex flex-col gap-3 tracking-widest'>
                <FormInput name={'username'} placeholder={'Masukan Username'} />
                <div className='relative'>
-                  <FormInput type={showPassword ? 'text' : 'password'} name={'password'} placeholder={'Masukan Password'} />
+                  <FormInput type={showPassword ? 'text' : 'password'} name={'password'} placeholder={'Masukan Kata Sandi'} />
                   <button onClick={handleShowPassword} className='absolute top-[4px] right-2'>
                      {showPassword ? <AiFillEye size={25} /> : <AiFillEyeInvisible size={25} />}
                   </button>
