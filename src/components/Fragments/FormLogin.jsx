@@ -26,7 +26,7 @@ export default function FormLogin() {
                <Button className='bg-gradient-to-r from-[#15bebe] to-[#a200a2] hover:from-[#a200a2] hover:to-[#15bebe] text-white' value={'Login'} />
                <p className='text-center'>
                   Belum punya akun?{' '}
-                  <Link to='' className='text-blue-500 font-bold hover:underline transition duration-300 ease-in-out'>
+                  <Link to='/register' className='text-blue-500 font-bold hover:underline transition duration-300 ease-in-out'>
                      Registrasi
                   </Link>
                </p>
