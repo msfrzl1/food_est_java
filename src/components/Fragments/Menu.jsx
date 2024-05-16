@@ -26,7 +26,7 @@ export default function Menu() {
    return (
       <div>
          <div className='container mx-auto px-2 lg:px-0 mb-2'>
-            <h1 className='font-briem font-black text-2xl lg:text-4xl text-center py-10 tracking-widest'>Menu Foods Est Java</h1>
+            <h1 className='font-briem font-black text-2xl lg:text-4xl text-center py-10'>Menu Foods Est Java</h1>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
                {menus.map((menu) => (
                   <div key={menu.id} className='m-2'>
