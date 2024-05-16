@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +10,7 @@ import useAuth from '../Hooks/useAuth';
 export default function FormLogin() {
    const [showPassword, setShowPassword] = useState(false);
    const { auth } = useAuth();
+   const navigate = useNavigate();
 
    const handleShowPassword = () => {
       setShowPassword(!showPassword);
@@ -25,7 +26,7 @@ export default function FormLogin() {
       const res = await auth('login', userData);
       if (res.status === 200) {
          setTimeout(() => {
-            window.location.reload();
+            navigate('/menus');
          }, 2000);
          toast.success(res.data.message);
       } else {
