@@ -1,4 +1,5 @@
 import LoginPage from '../../pages/loginPage';
+import MenuDetailPage from '../../pages/menuDetailPage';
 import MenuPage from '../../pages/menuPage';
 import RegisterPage from '../../pages/registerPage';
 
@@ -14,5 +15,9 @@ export const RouteList = [
    {
       path: '/menus',
       element: <MenuPage />,
+   },
+   {
+      path: `menus/:id`,
+      element: <MenuDetailPage />,
    },
 ];
