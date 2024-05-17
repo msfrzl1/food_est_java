@@ -28,7 +28,7 @@ export default function MenuDetail() {
                </Link>
                <p>&gt; {menus.name}</p>
             </div>
-            <div className='flex md:flex-row flex-col gap-5 tracking-widest'>
+            <div className='flex md:flex-row flex-col gap-5 mb-4 tracking-widest'>
                <div className='flex-1'>
                   <img src={menus.imageUrl} alt={menus.name} className='lg:h-[450px] h-72 w-full object-cover rounded' />
                </div>
