@@ -19,10 +19,10 @@ export default function MenuDetail() {
    }, []);
 
    return (
-      <div className='min-h-screen'>
+      <div className='min-h-screen pt-14'>
          <div className='container mx-auto px-4 lg:px-0'>
-            <h1 className='font-briem font-black text-2xl lg:text-4xl text-center py-9'>Menu Detail Foods Est Java</h1>
-            <div className='flex items-center gap-1 text-sm mb-2 px-1'>
+            <h1 className='font-briem font-black text-2xl lg:text-4xl text-center mb-3'>Menu Detail Foods Est Java</h1>
+            <div className='flex items-center gap-1 text-sm mb-3 px-1'>
                <Link to={'/menus'}>
                   <p className='text-blue-500 font-semibold'>Menus</p>
                </Link>
