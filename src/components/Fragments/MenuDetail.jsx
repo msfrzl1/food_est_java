@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useGet from '../Hooks/useGet';
+import { FaStar } from 'react-icons/fa';
 
 export default function MenuDetail() {
    const [menus, setMenus] = useState({});
@@ -27,27 +28,28 @@ export default function MenuDetail() {
                </Link>
                <p>&gt; {menus.name}</p>
             </div>
-            <div className='flex md:flex-row flex-col gap-5 border rounded bg-slate-50 tracking-widest'>
+            <div className='flex md:flex-row flex-col gap-5 tracking-widest'>
                <div className='flex-1'>
                   <img src={menus.imageUrl} alt={menus.name} className='lg:h-[450px] h-72 w-full object-cover rounded' />
                </div>
-               <div className='flex-1 flex flex-col justify-center gap-2 text-sm'>
-                  <h1>
-                     <span className='font-bold'>Name : </span>
-                     {menus.name}
-                  </h1>
-                  <p>
-                     <span className='font-bold'>Description : </span>
-                     {menus.description}
-                  </p>
-                  <p>
-                     <span className='font-bold'>Price : </span>
-                     {menus.priceFormatted}
-                  </p>
-                  <p>
-                     <span className='font-bold'>Type : </span>
-                     {menus.type}
-                  </p>
+               <div className='flex-1 flex flex-col text-sm'>
+                  <h1 className='font-bold text-2xl'>{menus.name}</h1>
+                  <div className='flex items-center gap-1 mb-2'>
+                     <FaStar className='text-orange-500' />
+                     <FaStar className='text-orange-500' />
+                     <FaStar className='text-orange-500' />
+                     <FaStar className='text-orange-500' />
+                     <FaStar className='text-orange-500' />
+                     <p className='text-xs font-semibold'>(5.0)</p>
+                  </div>
+                  <p className='text-3xl text-green-500 mb-2'>{menus.priceFormatted}</p>
+                  <div className='border-b-2 mb-3' />
+                  <div className='border rounded bg-slate-600 text-white font-semibold'>
+                     <p className='p-2 text-xl'>Description</p>
+                     <p className='p-2'>{menus.description}</p>
+                     <p className='p-2 text-xl'>Type menu</p>
+                     <p className='p-2'>{menus.type}</p>
+                  </div>
                </div>
             </div>
          </div>
