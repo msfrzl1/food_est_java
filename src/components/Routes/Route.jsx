@@ -1,3 +1,4 @@
+import CreateMenuPage from '../../pages/createMenuPage';
 import LoginPage from '../../pages/loginPage';
 import MenuDetailPage from '../../pages/menuDetailPage';
 import MenuPage from '../../pages/menuPage';
@@ -19,5 +20,9 @@ export const RouteList = [
    {
       path: `menus/:id`,
       element: <MenuDetailPage />,
+   },
+   {
+      path: `menus/create-menu`,
+      element: <CreateMenuPage />,
    },
 ];
