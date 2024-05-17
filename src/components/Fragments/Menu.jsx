@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import useGet from './../Hooks/useGet';
 import { Link } from 'react-router-dom';
+import useGet from './../Hooks/useGet';
 
 export default function Menu() {
    const [menus, setMenus] = useState([]);
