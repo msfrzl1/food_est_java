@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { CgClose } from 'react-icons/cg';
 import { LiaBarsSolid } from 'react-icons/lia';
 import { Link, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function Navbar() {
    const [menu, setMenu] = useState(false);
    const navigate = useNavigate();
+   const path = useLocation().pathname;
 
    const toggleMenu = () => {
       setMenu(!menu);
@@ -24,23 +26,27 @@ export default function Navbar() {
             <h1 className='font-briem font-black text-white text-md'>Foods Est Java</h1>
             <div className='hidden md:block'>
                <div className='flex items-center gap-3 text-sm font-semibold'>
-                  <Link to={'/menus'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+                  <Link
+                     to={'/menus'}
+                     className={`text-white px-2 py-1 ${path === '/menus' ? 'bg-gradient-to-r from-[#a200a2] to-[#15bebe] px-2 py-1' : ''}}`}
+                  >
                      Menus
                   </Link>
-                  <Link to={'/menus/create-menu'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+                  <Link
+                     to={'/menus/create-menu'}
+                     className={`text-white px-2 py-1 ${
+                        path === '/menus/create-menu' ? 'bg-gradient-to-r from-[#a200a2] to-[#15bebe] px-2 py-1' : ''
+                     }}`}
+                  >
                      Add Menu
                   </Link>
                   <div>
                      {token ? (
-                        <Link
-                           to={'/'}
-                           className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'
-                           onClick={logout}
-                        >
+                        <Link to={'/'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 text-white' onClick={logout}>
                            Logout
                         </Link>
                      ) : (
-                        <Link to={'/login'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+                        <Link to={'/login'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 text-white'>
                            Login
                         </Link>
                      )}
@@ -55,18 +61,24 @@ export default function Navbar() {
          </div>
          {menu && (
             <div className='flex flex-col px-2 pb-2 gap-1 text-sm w-full md:hidden'>
-               <Link to={'/menus'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+               <Link
+                  to={'/menus'}
+                  className={`text-white px-2 py-1 ${path === '/menus' ? 'bg-gradient-to-r from-[#a200a2] to-[#15bebe] px-2 py-1' : ''}}`}
+               >
                   Menus
                </Link>
-               <Link to={'/menus/create-menu'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+               <Link
+                  to={'/menus/create-menu'}
+                  className={`text-white px-2 py-1 ${path === '/menus/create-menu' ? 'bg-gradient-to-r from-[#a200a2] to-[#15bebe] px-2 py-1' : ''}}`}
+               >
                   Add Menu
                </Link>
                {token ? (
-                  <Link to={'/'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white' onClick={logout}>
+                  <Link to={'/'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 text-white' onClick={logout}>
                      Logout
                   </Link>
                ) : (
-                  <Link to={'/login'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+                  <Link to={'/login'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 text-white'>
                      Login
                   </Link>
                )}
