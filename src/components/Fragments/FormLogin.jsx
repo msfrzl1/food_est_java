@@ -25,6 +25,8 @@ export default function FormLogin() {
 
       const res = await auth('login', userData);
       if (res.status === 200) {
+         const token = res.data.data.token;
+         localStorage.setItem('token', token);
          setTimeout(() => {
             navigate('/menus');
          }, 2000);

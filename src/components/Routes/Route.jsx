@@ -3,8 +3,13 @@ import LoginPage from '../../pages/loginPage';
 import MenuDetailPage from '../../pages/menuDetailPage';
 import MenuPage from '../../pages/menuPage';
 import RegisterPage from '../../pages/registerPage';
+import ProtectedRoute from './ProtectedRoute';
 
 export const RouteList = [
+   {
+      path: '/',
+      element: <LoginPage />,
+   },
    {
       path: '/login',
       element: <LoginPage />,
@@ -15,14 +20,26 @@ export const RouteList = [
    },
    {
       path: '/menus',
-      element: <MenuPage />,
+      element: (
+         <ProtectedRoute>
+            <MenuPage />
+         </ProtectedRoute>
+      ),
    },
    {
       path: `menus/:id`,
-      element: <MenuDetailPage />,
+      element: (
+         <ProtectedRoute>
+            <MenuDetailPage />
+         </ProtectedRoute>
+      ),
    },
    {
       path: `menus/create-menu`,
-      element: <CreateMenuPage />,
+      element: (
+         <ProtectedRoute>
+            <CreateMenuPage />
+         </ProtectedRoute>
+      ),
    },
 ];
