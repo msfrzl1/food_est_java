@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import { CgClose } from 'react-icons/cg';
 import { LiaBarsSolid } from 'react-icons/lia';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
    const [menu, setMenu] = useState(false);
+   const navigate = useNavigate();
 
    const toggleMenu = () => {
       setMenu(!menu);
+   };
+
+   const token = localStorage.getItem('token');
+
+   const logout = () => {
+      localStorage.removeItem('token');
+      navigate('/login');
    };
 
    return (
@@ -22,6 +30,21 @@ export default function Navbar() {
                   <Link to={'/menus/create-menu'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
                      Add Menu
                   </Link>
+                  <div>
+                     {token ? (
+                        <Link
+                           to={'/'}
+                           className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'
+                           onClick={logout}
+                        >
+                           Logout
+                        </Link>
+                     ) : (
+                        <Link to={'/login'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+                           Login
+                        </Link>
+                     )}
+                  </div>
                </div>
             </div>
             <button className='md:hidden' onClick={toggleMenu}>
@@ -31,13 +54,22 @@ export default function Navbar() {
             </button>
          </div>
          {menu && (
-            <div className='flex flex-col px-2 pb-2 gap-1 md:hidden'>
+            <div className='flex flex-col px-2 pb-2 gap-1 text-sm w-full md:hidden'>
                <Link to={'/menus'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
                   Menus
                </Link>
                <Link to={'/menus/create-menu'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
                   Add Menu
                </Link>
+               {token ? (
+                  <Link to={'/'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white' onClick={logout}>
+                     Logout
+                  </Link>
+               ) : (
+                  <Link to={'/login'} className='bg-gradient-to-r hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-1 rounded text-white'>
+                     Login
+                  </Link>
+               )}
             </div>
          )}
       </nav>
