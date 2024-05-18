@@ -36,7 +36,7 @@ export default function CreateMenu() {
    };
 
    return (
-      <div className='min-h-screen pt-14 px-4 lg:px-0'>
+      <div className='min-h-screen pt-14 px-4 lg:px-0 pb-5'>
          <div className='container mx-auto'>
             <h1 className='font-briem font-black text-2xl lg:text-4xl text-center mb-7'>Create Menu</h1>
             <div className='flex lg:flex-row flex-col gap-5'>
