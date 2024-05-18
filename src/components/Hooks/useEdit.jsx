@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export default function useDelete() {
-   const deleteData = async (url) => {
+export default function useEdit() {
+   const editData = async (url, body) => {
       try {
-         const res = await axios.delete(`https://api.mudoapi.tech/${url}`, {
+         const res = await axios.put(`https://api.mudoapi.tech/${url}`, body, {
             headers: {
                Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -13,5 +13,6 @@ export default function useDelete() {
          return error;
       }
    };
-   return { deleteData };
+
+   return { editData };
 }

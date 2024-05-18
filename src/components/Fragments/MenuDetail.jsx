@@ -67,13 +67,21 @@ export default function MenuDetail() {
                      <p className='p-2 text-xl'>Type menu</p>
                      <p className='p-2'>{menus.type}</p>
                   </div>
-                  <button
-                     onClick={handleDelete}
-                     type='button'
-                     className='w-full bg-gradient-to-r from-[#15bebe] to-[#a200a2] hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-2 rounded text-white font-semibold mt-3'
-                  >
-                     Delete
-                  </button>
+                  <div className='flex flex-col lg:flex-row lg:gap-3 gap-0'>
+                     <Link
+                        to={`/menus/edit-menu/${menus.id}`}
+                        className='w-full bg-gradient-to-r from-[#15bebe] to-[#a200a2] hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-2 rounded text-white font-semibold mt-3 text-center'
+                     >
+                        Edit
+                     </Link>
+                     <button
+                        onClick={handleDelete}
+                        type='button'
+                        className='w-full bg-gradient-to-r from-[#15bebe] to-[#a200a2] hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-2 rounded text-white font-semibold mt-3'
+                     >
+                        Delete
+                     </button>
+                  </div>
                </div>
             </div>
          </div>
