@@ -1,5 +1,5 @@
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import FormInput from '../Elements/FormInput';
 import usePost from '../Hooks/usePost';
@@ -39,15 +39,21 @@ export default function CreateMenu() {
       <div className='min-h-screen pt-14 px-4 lg:px-0 pb-5'>
          <div className='container mx-auto'>
             <h1 className='font-briem font-black text-2xl lg:text-4xl text-center mb-7'>Create Menu</h1>
+            <div className='flex items-center gap-1 text-sm mb-3 px-1'>
+               <Link to={'/menus'}>
+                  <p className='text-blue-500 font-semibold'>Menus</p>
+               </Link>
+               <p>&gt; Create Menu</p>
+            </div>
             <div className='flex lg:flex-row flex-col gap-5'>
                <div className='flex-1 flex justify-center'>
                   {imageUrl ? (
-                     <img src={imageUrl} alt='preview' className='lg:h-[450px] h-72 w-full object-cover rounded' />
+                     <img src={imageUrl} alt='preview' className='lg:h-[420px] h-72 w-full object-cover rounded' />
                   ) : (
                      <img
                         src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaWTwYdFl_1HsRhi-S54y15xmQF6yBjBSnKUa3v62sNQ&s'
                         alt='preview'
-                        className='w-[450px] h-[450px] object-cover rounded border'
+                        className='w-[450px] h-[420px] object-cover rounded border'
                      />
                   )}
                </div>

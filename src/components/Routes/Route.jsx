@@ -1,9 +1,9 @@
 import CreateMenuPage from '../../pages/createMenuPage';
+import EditMenuPage from '../../pages/editMenuPage';
 import LoginPage from '../../pages/loginPage';
 import MenuDetailPage from '../../pages/menuDetailPage';
 import MenuPage from '../../pages/menuPage';
 import RegisterPage from '../../pages/registerPage';
-import MenuEdit from '../Fragments/MenuEdit';
 import ProtectedRoute from './ProtectedRoute';
 
 export const RouteList = [
@@ -47,7 +47,7 @@ export const RouteList = [
       path: `menus/edit-menu/:id`,
       element: (
          <ProtectedRoute>
-            <MenuEdit />
+            <EditMenuPage />
          </ProtectedRoute>
       ),
    },
