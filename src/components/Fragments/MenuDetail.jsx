@@ -1,17 +1,34 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import useGet from '../Hooks/useGet';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useGet from '../Hooks/useGet';
+import useDelete from '../Hooks/useDelete';
 
 export default function MenuDetail() {
    const [menus, setMenus] = useState({});
    const { getData } = useGet();
+   const { deleteData } = useDelete();
    const { id } = useParams();
+   const navigate = useNavigate();
 
    const getMenuDetail = async () => {
       const res = await getData(`menu/${id}`);
       setMenus(res.data.data);
+   };
+
+   const handleDelete = async () => {
+      const res = await deleteData(`menu/${id}`);
+      if (res.status === 200) {
+         setTimeout(() => {
+            navigate('/menus');
+         }, 2000);
+         toast.success(res.data.message);
+      } else {
+         toast.error(res.response.data.message);
+      }
    };
 
    useEffect(() => {
@@ -50,9 +67,27 @@ export default function MenuDetail() {
                      <p className='p-2 text-xl'>Type menu</p>
                      <p className='p-2'>{menus.type}</p>
                   </div>
+                  <button
+                     onClick={handleDelete}
+                     type='button'
+                     className='w-full bg-gradient-to-r from-[#15bebe] to-[#a200a2] hover:from-[#a200a2] hover:to-[#15bebe] px-2 py-2 rounded text-white font-semibold mt-3'
+                  >
+                     Delete
+                  </button>
                </div>
             </div>
          </div>
+         <ToastContainer
+            position='top-center'
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            pauseOnHover
+            theme='dark'
+         />
       </div>
    );
 }
